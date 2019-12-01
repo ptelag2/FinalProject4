@@ -1,5 +1,6 @@
 package com.example.finalproject3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         startBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.d("HEllo", "HELLO");
+                startActivity(new Intent(MainActivity.this, GameActivity.class));
+                //finish();
             }
         });
     }

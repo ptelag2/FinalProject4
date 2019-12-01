@@ -12,6 +12,11 @@ public class GameActivity extends AppCompatActivity{
         setContentView(R.layout.game_screen);
 
 
+        String[] textColor = {"Red", "Orange", "Yellow", "Green", "Blue", "Purple"};
+
+
+
+
 
 
     }
