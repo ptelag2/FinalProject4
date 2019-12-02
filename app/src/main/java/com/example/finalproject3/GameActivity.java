@@ -15,10 +15,6 @@ public class GameActivity extends AppCompatActivity{
         String[] textColor = {"Red", "Orange", "Yellow", "Green", "Blue", "Purple"};
 
 
-
-
-
-
     }
 
 }
