@@ -1,6 +1,7 @@
 package com.example.finalproject3;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class GameActivity extends AppCompatActivity{
 
     String[] textColor = {"Red", "Orange", "Yellow", "Green", "Blue", "Purple"};
-    int[] colors = {0, 0, 0, 0, 0, 0};
+    int[] colors = {Color.RED , Color.rgb(252, 144, 3), Color.YELLOW, Color.GREEN, Color.BLUE, Color.MAGENTA};
     TextView colorView;
     TextView score;
     int totalScore = 0;
@@ -109,13 +110,14 @@ public class GameActivity extends AppCompatActivity{
 
         int correctIndex = (int) (Math.random() * 6);
         int correctButton = (int) (Math.random() * 4);
+        int randomColor = (int) (Math.random() * 6);
         correct[correctButton] = true;
         answers[correctButton].setText(textColor[correctIndex]);
 
         colorView.setText(textColor[correctIndex]);
-        colorView.setTextColor(255);
+        colorView.setTextColor(colors[randomColor]);
 
-        setIncorrectButtons(answers[correctButton], textColor[correctIndex]);
+        setIncorrectButtons(answers[correctButton], textColor[correctIndex], correctIndex);
         counter++;
 
     }
@@ -133,22 +135,26 @@ public class GameActivity extends AppCompatActivity{
         }
     }
 
-    public void setIncorrectButtons(Button but, String color) {
+    public void setIncorrectButtons(Button but, String color, int ind) {
         ArrayList<String> previous = new ArrayList<>();
         for (int i = 0; i < answers.length; i++) {
             if (answers[i] == but) {
+                answers[i].setTextColor(colors[ind]);
                 continue;
             }
-
-            String wrong = textColor[(int) (Math.random() * 6)];
+            int ran = (int) (Math.random() * 6);
+            String wrong = textColor[ran];
 
             while (!canBeUsed(previous, wrong, color)) {
-                wrong = textColor[(int) (Math.random() * 6)];
+                ran = (int) (Math.random() * 6);
+                wrong = textColor[ran];
             }
 
             previous.add(wrong);
             answers[i].setText(wrong);
+            answers[i].setTextColor(colors[ran]);
         }
+
     }
 
     public Button[] populateButtons() {
