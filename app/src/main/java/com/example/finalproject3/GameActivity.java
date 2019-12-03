@@ -14,6 +14,8 @@ public class GameActivity extends AppCompatActivity{
 
     String[] textColor = {"Red", "Orange", "Yellow", "Green", "Blue", "Purple"};
     TextView colorView;
+    TextView score;
+    int totalScore = 0;
     Button btn1;
     Button btn2;
     Button btn3;
@@ -33,6 +35,7 @@ public class GameActivity extends AppCompatActivity{
         setContentView(R.layout.game_screen);
 
         colorView = findViewById(R.id.colorText);
+        score = findViewById(R.id.score);
 
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
@@ -46,24 +49,44 @@ public class GameActivity extends AppCompatActivity{
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (correct[0]) {
+                    totalScore++;
+                    String scoring = "" + totalScore;
+                    score.setText(scoring);
+                }
                 nextTurn();
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (correct[1]) {
+                    totalScore++;
+                    String scoring = "" + totalScore;
+                    score.setText(scoring);
+                }
                 nextTurn();
             }
         });
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (correct[2]) {
+                    totalScore++;
+                    String scoring = "" + totalScore;
+                    score.setText(scoring);
+                }
                 nextTurn();
             }
         });
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (correct[3]) {
+                    totalScore++;
+                    String scoring = "" + totalScore;
+                    score.setText(scoring);
+                }
                 nextTurn();
             }
         });
@@ -75,6 +98,7 @@ public class GameActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
+        nextTurn();
     }
 
 
