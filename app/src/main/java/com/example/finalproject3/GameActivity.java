@@ -117,7 +117,7 @@ public class GameActivity extends AppCompatActivity{
         counter++;
 
     }
-    
+
     public void ending() {
         if (counter == 10) {
             setContentView(R.layout.ending_screen);
