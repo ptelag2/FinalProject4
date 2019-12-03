@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class GameActivity extends AppCompatActivity{
 
     String[] textColor = {"Red", "Orange", "Yellow", "Green", "Blue", "Purple"};
+    int[] colors = {0, 0, 0, 0, 0, 0};
     TextView colorView;
     TextView score;
     int totalScore = 0;
@@ -112,6 +113,7 @@ public class GameActivity extends AppCompatActivity{
         answers[correctButton].setText(textColor[correctIndex]);
 
         colorView.setText(textColor[correctIndex]);
+        colorView.setTextColor(255);
 
         setIncorrectButtons(answers[correctButton], textColor[correctIndex]);
         counter++;
@@ -120,7 +122,8 @@ public class GameActivity extends AppCompatActivity{
 
     public void ending() {
         if (counter == 10) {
-            setContentView(R.layout.ending_screen);
+            Intent intent = new Intent(this, Ending.class);
+            startActivity(intent);
         }
     }
 

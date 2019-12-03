@@ -19,7 +19,7 @@ public class Ending  extends AppCompatActivity {
 
         playAgain = findViewById(R.id.againbtn);
         scoring = findViewById(R.id.scoring);
-        scoring.setText("")
+        scoring.setText("");
 
         playAgain.setOnClickListener(new View.OnClickListener() {
             @Override
