@@ -28,6 +28,7 @@ public class GameActivity extends AppCompatActivity{
     boolean ans3;
     boolean ans4;
     Button cancel;
+    int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,8 +114,14 @@ public class GameActivity extends AppCompatActivity{
         colorView.setText(textColor[correctIndex]);
 
         setIncorrectButtons(answers[correctButton], textColor[correctIndex]);
+        counter++;
 
-
+    }
+    
+    public void ending() {
+        if (counter == 10) {
+            setContentView(R.layout.ending_screen);
+        }
     }
 
     public void setAllFalse() {
