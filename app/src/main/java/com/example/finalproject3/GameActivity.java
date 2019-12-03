@@ -137,11 +137,13 @@ public class GameActivity extends AppCompatActivity{
 
     public void setIncorrectButtons(Button but, String color, int ind) {
         ArrayList<String> previous = new ArrayList<>();
+        previous.add(color);
         for (int i = 0; i < answers.length; i++) {
             if (answers[i] == but) {
                 answers[i].setTextColor(colors[ind]);
                 continue;
             }
+
             int ran = (int) (Math.random() * 6);
             String wrong = textColor[ran];
 
