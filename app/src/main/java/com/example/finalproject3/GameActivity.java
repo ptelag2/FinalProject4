@@ -133,7 +133,7 @@ public class GameActivity extends AppCompatActivity{
     }
 
     public void ending() {
-        if (counter == 10) {
+        if (counter == 11) {
             Intent intent = new Intent(this, Ending.class);
             intent.putExtra("wrong", wrong);
             intent.putExtra("correct", totalScore);
