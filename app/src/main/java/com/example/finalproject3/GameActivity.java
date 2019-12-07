@@ -18,6 +18,7 @@ public class GameActivity extends AppCompatActivity{
     TextView colorView;
     TextView score;
     int totalScore = 0;
+    int wrong = 0;
     Button btn1;
     Button btn2;
     Button btn3;
@@ -56,6 +57,8 @@ public class GameActivity extends AppCompatActivity{
                     totalScore++;
                     String scoring = "" + totalScore;
                     score.setText(scoring);
+                } else {
+                    wrong++;
                 }
                 nextTurn();
             }
@@ -67,6 +70,8 @@ public class GameActivity extends AppCompatActivity{
                     totalScore++;
                     String scoring = "" + totalScore;
                     score.setText(scoring);
+                } else {
+                    wrong++;
                 }
                 nextTurn();
             }
@@ -78,6 +83,8 @@ public class GameActivity extends AppCompatActivity{
                     totalScore++;
                     String scoring = "" + totalScore;
                     score.setText(scoring);
+                } else {
+                    wrong++;
                 }
                 nextTurn();
             }
@@ -89,6 +96,8 @@ public class GameActivity extends AppCompatActivity{
                     totalScore++;
                     String scoring = "" + totalScore;
                     score.setText(scoring);
+                } else {
+                    wrong++;
                 }
                 nextTurn();
             }
@@ -119,12 +128,15 @@ public class GameActivity extends AppCompatActivity{
 
         setIncorrectButtons(answers[correctButton], textColor[correctIndex], correctIndex);
         counter++;
+        ending();
 
     }
 
     public void ending() {
         if (counter == 10) {
             Intent intent = new Intent(this, Ending.class);
+            intent.putExtra("wrong", wrong);
+            intent.putExtra("correct", totalScore);
             startActivity(intent);
         }
     }
