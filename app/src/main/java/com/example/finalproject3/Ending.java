@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.github.tbouron.shakedetector.library.ShakeDetector;
 
 public class Ending  extends AppCompatActivity {
 
@@ -28,12 +31,19 @@ public class Ending  extends AppCompatActivity {
         scoring.setText(val);
         String vals = "" + correct;
         correctScore.setText(vals);
-        playAgain.setOnClickListener(new View.OnClickListener() {
+        ShakeDetector.create(this, new ShakeDetector.OnShakeListener() {
             @Override
-            public void onClick(View v) {
+            public void OnShake() {
+                Toast.makeText(getApplicationContext(), "Device shaken!", Toast.LENGTH_SHORT).show();
                 launchGame();
             }
         });
+        // playAgain.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        launchGame();
+        //    }
+        // });
 
 
 
@@ -41,5 +51,23 @@ public class Ending  extends AppCompatActivity {
     public void launchGame() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ShakeDetector.start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        ShakeDetector.stop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ShakeDetector.destroy();
     }
 }
